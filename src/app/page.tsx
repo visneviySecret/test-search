@@ -69,6 +69,7 @@ function Home() {
         <Styled.InputWrap>
           <Styled.Input
             id="search"
+            data-testid="search"
             type="text"
             value={query}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -88,7 +89,9 @@ function Home() {
       </Styled.Container>
 
       <Styled.Container>
-        {isLoading && <Styled.Muted>Загрузка…</Styled.Muted>}
+        {isLoading && (
+          <Styled.Muted data-testid="loading">Загрузка…</Styled.Muted>
+        )}
         {error && <Styled.ErrorText>{error}</Styled.ErrorText>}
 
         {!isLoading && !error && results.length === 0 && debouncedQuery && (
