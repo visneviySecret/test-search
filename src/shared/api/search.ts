@@ -7,7 +7,7 @@ export async function getSearch(query: string, controller: AbortController) {
       signal: controller.signal,
       headers: { Accept: "application/json" },
     });
-  } catch (e) {
+  } catch {
     const q = (query || "").trim().toLowerCase();
     const results = q
       ? DATASET.filter(
