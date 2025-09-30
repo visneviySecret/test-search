@@ -52,6 +52,7 @@ export default function Home() {
         if (e.name === "AbortError") return;
         if (myRequestId === requestIdRef.current) {
           setError("Ошибка загрузки результатов");
+          setResults([]);
         }
       })
       .finally(() => {
