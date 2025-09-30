@@ -1,11 +1,11 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import * as Styled from "./home.styles";
+import * as Styled from "@/home/home.styles";
 import useDebounce from "@/shared/lib/debounce";
 import { useSearchParams } from "next/navigation";
-import useSearhQuery from "./useSearhQuery";
-import { getSearch } from "@/app/api/search";
+import useSearchQuery from "@/features/home/useSearchQuery";
+import { getSearch } from "@/shared/api/search";
 
 type SearchItem = { id: number; title: string; description: string };
 
@@ -20,7 +20,7 @@ export default function Home() {
 
   const debouncedQuery = useDebounce(query, 250);
 
-  useSearhQuery(debouncedQuery, setQuery);
+  useSearchQuery(setQuery);
 
   const abortRef = useRef<AbortController | null>(null);
   const requestIdRef = useRef<number>(0);
@@ -72,7 +72,9 @@ export default function Home() {
             id="search"
             type="text"
             value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setQuery(e.target.value)
+            }
             placeholder="Введите запрос..."
           />
           {query ? (
