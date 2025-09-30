@@ -17,9 +17,9 @@ function Home() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
-  const debouncedQuery = useDebounce(query, 250);
+  const debouncedQuery = useDebounce(query, 500);
 
-  useSearchQuery(setQuery);
+  useSearchQuery(debouncedQuery, setQuery);
 
   const abortRef = useRef<AbortController | null>(null);
   const requestIdRef = useRef<number>(0);
