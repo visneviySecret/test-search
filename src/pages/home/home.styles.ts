@@ -1,7 +1,11 @@
 import styled from "styled-components";
 
 export const Main = styled.div`
-  gap: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 4rem;
+  padding-inline: 1rem;
 `;
 
 export const Container = styled.div`
