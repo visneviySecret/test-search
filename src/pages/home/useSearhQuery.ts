@@ -9,7 +9,9 @@ export default function useSearhQuery(
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    const params = new URLSearchParams(Array.from(searchParams.entries()));
+    const params = new URLSearchParams(
+      Array.from(searchParams ? searchParams.entries() : [])
+    );
     if (debouncedQuery) {
       params.set("q", debouncedQuery);
     } else {
@@ -19,7 +21,7 @@ export default function useSearhQuery(
   }, [debouncedQuery]);
 
   useEffect(() => {
-    const urlQ = (searchParams.get("q") || "").toString();
+    const urlQ = (searchParams?.get("q") || "").toString();
     setQuery(urlQ);
   }, [searchParams]);
 }

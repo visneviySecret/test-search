@@ -11,7 +11,7 @@ type SearchItem = { id: number; title: string; description: string };
 
 export default function Home() {
   const searchParams = useSearchParams();
-  const initialQuery = (searchParams.get("q") || "").toString();
+  const initialQuery = (searchParams?.get("q") || "").toString();
 
   const [query, setQuery] = useState<string>(initialQuery);
   const [results, setResults] = useState<SearchItem[]>([]);
